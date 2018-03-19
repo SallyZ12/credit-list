@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Credit List Sinatra Project</title>
+</head>
+<body>
+
+</br>
+  <nav>
+    <%= yield %>
+  <% if logged_in? %>
+<p> Add a <%=current_user.username%> <a href="/creditss/new"> New Credit</a> </br>
+<p> View Only <%=current_user.username%> Credits <a href= "/users/<%= current_user.username %>">Select</a></p>
+ <p> <a href= "/tweets"> Select </a> To View Credits By All Users </P>
+<a href="/logout"> Log Out </a>
+
+<% else %>
+<p> Please <a href="/signup">Sign Up</a></p>
+<p> Please <a href="/login"> Log In </a></P>
+<%end %>
+
+</nav>
+
+</body>
+</html>
