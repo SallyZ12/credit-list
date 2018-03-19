@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180319152737) do
     t.string "credit_name"
     t.string "sector"
     t.integer "user_id"
+    t.string "rating"
   end
 
   create_table "transactions", force: :cascade do |t|
