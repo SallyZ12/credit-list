@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:message] = "Missing Information - Please Try Again"
       redirect '/signup'
     else
-      @user = User.new(username: params[:username]), password: params[:password])
+      @user = User.new(username: params[:username], password: params[:password])
       @user.save
 
       session[:user_id] = @user.id
@@ -29,6 +29,36 @@ class UsersController < ApplicationController
     end
   end
 
+
+  get '/login' do
+     if ! logged_in?
+       erb :'users/login'
+     else
+       redirect '/credits'
+     end
   end
+
+  post '/login' do
+
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/credits'
+    else
+      flash[:message] = "Login Failed, Please Try Again (You May Need to Register)"
+      redirect '/login'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect '/login'
+    else
+      redirect '/'
+    end
+  end
+
+
 
 end

@@ -1,16 +1,12 @@
-<h2> Welcome to Credit List, Please Register</h2>
+<h3> Welcome to Credit List, Please Log In </h3>
 
 <h4 style = "color:red;"><% if flash.has?(:message) %>
 <%= flash[:message] %>
 <% end %></h4>
 
-
-<h3>Register</h3>
-<form action="/signup" method="POST">
+<h3>Log In</h3>
+<form action="/login" method="POST">
   <input type="text" name="username" placeholder="Username:">
   <input type="password" name="password" placeholder="Password:">
-  <input type="submit" value="Sign Up">
+  <input type="submit" value="submit">
 </form>
-
-
-<p> <a href= "/" > Back to Home Page </a> </p>
