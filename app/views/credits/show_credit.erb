@@ -1,0 +1,12 @@
+<h3> Hello, <%=current_user.username%> </h3>
+
+<p> Your List of Credits Follows </p>
+
+<% current_user.credits.each do |credit|%>
+
+<li> <a href= "credits/<%=credit.id%>"> <%=credit.credit_name%> <%=credit.sector%> </a></li>
+<%end%>
+
+</br>
+
+<label> Select a Credit to Edit or Delete </label>

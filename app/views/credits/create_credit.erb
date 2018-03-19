@@ -8,11 +8,22 @@
 
 <form action = "/credits" method = "POST" >
 
-  <label> Credit Information </label>
-
-  <input type= "text" name = "credit_name">
-  <input type= "text" name = "sector">
-
-  <input type = "submit" value = "submit">
+  <h3> Credit Information </h3>
+</br>
+  <label> Credit Name <input type= "text" name = "credit_name"></label>
+</br></br>
+<label> Sector <input type= "text" name = "sector"></label></br>
+</br>
+<label> Rating  <input list= "ratings">
+  <datalist id ="ratings">
+    <option value= "">
+    <option value= "AAA">
+    <option value= "AA">
+    <option value= "A">
+    <option value= "BBB">
+    <option value= "Not Investment Grade">
+    </datalist> </label>
+  </br></br>
+  <input type = "submit" value = "New Credit">
 
 </form>

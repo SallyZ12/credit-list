@@ -1,3 +1,4 @@
+require 'pry'
 class CreditsController < ApplicationController
    use Rack::Flash
 
@@ -17,6 +18,30 @@ class CreditsController < ApplicationController
        redirect '/login'
      end
    end
+
+   post '/credits' do
+     if logged_in?
+       if params[:credit_name]== ""|| params[:sector] == "" || params[:rating] == ""
+         flash[:message] = "Missing Data - Try Again"
+         redirect '/credits/new'
+       else
+         @credit = current_user.credits.build(credit_name: params[:credit_name], sector: params[:sector], rating: params[:rating])
+         @credit.save
+         binding.pry
+        redirect '/credits/#{@credit.id}'
+      end
+    end
+   end
+
+   get '/credits/:id' do
+     if logged_in?
+       @credit = Credit.find_by_id(params[:id])
+       erb :'/credits/show_credit'
+     else
+       redirect '/login'
+     end
+   end
+
 
 
  end
