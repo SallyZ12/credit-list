@@ -3,3 +3,14 @@
 
 </h3> Credit Name: <%= @credit.credit_name %> </h3> <h4>Credit Sector: <%= @credit.sector %> </h4>
 <h4> Credit Rating: <%= @credit.rating %> </h4>
+
+
+<form action= "credits/<%=@credit.id%>/delete" method = "POST">
+  <input id = "hidden" type = "Delete Credit"></br></br>
+
+</form>
+
+<label> To Edit This Credit Select: </label>
+<a href ="/credits/<%=@credit.id%>/edit"> "Edit Credit"</a>
+
+</br></br>
