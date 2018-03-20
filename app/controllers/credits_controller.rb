@@ -27,8 +27,8 @@ class CreditsController < ApplicationController
        else
          @credit = current_user.credits.build(credit_name: params[:credit_name], sector: params[:sector], rating: params[:rating])
          @credit.save
-         binding.pry
-        redirect '/credits/#{@credit.id}'
+    
+        redirect "/credits/#{@credit.id}"
       end
     end
    end

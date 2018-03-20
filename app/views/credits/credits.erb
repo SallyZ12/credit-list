@@ -1,0 +1,9 @@
+<h2> Welcome, <%=current_user.username%> </h2>
+
+<label> All Credits! </label>
+
+</br></br>
+
+<%@credits.order("credit_name").each do |credit|%>
+<li> <%= credit.credit_name %> </li>
+<%end%>
