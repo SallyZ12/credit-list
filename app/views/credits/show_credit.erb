@@ -1,12 +1,22 @@
 <h4> show_credit</h>
 <h3> Hello, <%=current_user.username%> </h3>
 
+<h4 style = "color:red;"><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h4>
+
+
+
 </h3> Credit Name: <%= @credit.credit_name %> </h3> <h4>Credit Sector: <%= @credit.sector %> </h4>
 <h4> Credit Rating: <%= @credit.rating %> </h4>
 
 
-<form action= "credits/<%=@credit.id%>/delete" method = "POST">
-  <input id = "hidden" type = "Delete Credit"></br></br>
+<form action= "/credits/<%=@credit.id%>/delete" method = "POST">
+  <input id = "hidden" type = "hidden" name = "_method" value = "delete">
+ </input</br>
+
+<label> Select to Delete This Credit:</label>
+<input type = "submit" value = "Delete Credit"></br></br>
 
 </form>
 

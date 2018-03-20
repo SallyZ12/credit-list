@@ -1,0 +1,39 @@
+<h3> User Logged In As: <%=current_user.username%> </h3></br>
+</br>
+
+
+<h4> Credit to Edit: <%= @credit.credit_name%> </h4>
+
+<form action = "/credits/<%= @credit.id %>" method = "POST">
+  <input id = "hidden" type = "hidden" name = "_method" value = "patch">
+
+  <h3> Credit Name </h3>
+  <input type = "text" name = "credit_name" value = "<%= @credit.credit_name%>"></input>
+
+</br></br>
+<label> Sector <input list= "sector" name = "sector" value = "<%= @credit.sector %>">
+  <datalist id = "sector" >
+    <option value = "" >
+      <option value = "excise tax">
+        <option value = "electric">
+          <option value = "GO">
+            <option value = "gas">
+              <option value = "water">
+                <option value = "lease">
+                </datalist> </input></label>
+</br></br>
+<label> Rating  <input list= "rating" name = "rating" value = "<%= @credit.rating %>">
+  <datalist id = "rating" >
+    <option value= "" >
+      <option value= "AAA">
+        <option value= "AA">
+          <option value= "A">
+            <option value= "BBB">
+              <option value= "Not Investment Grade">
+              </datalist> </input></label>
+  </br></br>
+
+  <input type = "submit" value = "Edit Credit">
+
+
+</form>

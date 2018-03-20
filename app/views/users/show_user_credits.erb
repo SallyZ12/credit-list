@@ -2,6 +2,10 @@
 
 <p> Your List of Credits Follows: </p>
 
+<h4 style = "color:red;"><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h4>
+
 <% current_user.credits.order("credit_name").each do |credit|%>
 
  <a href= "/credits/<%=credit.id%>"></a>

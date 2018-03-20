@@ -53,14 +53,15 @@ class CreditsController < ApplicationController
      end
    end
 
-   patch '/credits/id' do
+   patch '/credits/:id' do
      if logged_in?
-        if params[:credit_name]== ""|| params[:sector] == "" || params[:rating] == ""
+        if params[:credit_name] == ""|| params[:sector] == "" || params[:rating] == ""
           redirect "/credits/#{params[:id]}/edit"
         else
           @credit = Credit.find_by_id(params[:id])
             if @credit.user_id == current_user.id
               if @credit.update(credit_name: params[:credit_name], sector: params[:sector], rating: params[:rating])
+                flash[:message] = "Credit Edited"
                 redirect "/credits/#{@credit.id}"
               else redirect "/credits/#{@credit.id}/edit"
               end
@@ -78,7 +79,8 @@ class CreditsController < ApplicationController
        @credit = Credit.find_by_id(params[:id])
         if @credit.user_id == current_user.id
           @credit.delete
-          redirect '/credits'
+          flash[:message] = "Credit Deleted"
+          redirect "/users/show_user_credits"
         else
           redirect '/login'
         end
@@ -86,13 +88,3 @@ class CreditsController < ApplicationController
     end
 
   end
-
-
-
-
-   end
-
-
-
-
- end
