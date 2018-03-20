@@ -4,8 +4,27 @@
 
 <% current_user.credits.order("credit_name").each do |credit|%>
 
-<li> Credit Name <a href= "/credits/<%=credit.id%>"><%=credit.credit_name%> </a> <p> Credit Sector: <%=credit.sector%>,      Credit Rating: <%=credit.rating%></p></li>
-
+ <a href= "/credits/<%=credit.id%>"></a>
+<head>
+ <style>
+ table, th, td {
+     border: 1px solid blue;
+ }
+ </style>
+ </head>
+ <table style="width:50%">
+   <tr>
+     <th id="credit_name">Credit Name</th>
+     <th id="sector">Sector</th>
+     <th id="rating">Rating</th>
+   </tr>
+   <tr>
+     <td headers="credit_name"><a href="/credits/<%=credit.id%>"><%=credit.credit_name%> </td>
+     <td headers="sector"><%=credit.sector%></td>
+     <td headers="phone"><%=credit.rating%></td>
+ </td>
+   </tr>
+ </table>
 <%end%>
 
 </br>

@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect '/credits'
+      redirect 'users/show_user_credits'
     else
       flash[:message] = "Login Failed, Please Try Again (You May Need to Register)"
       redirect '/login'
