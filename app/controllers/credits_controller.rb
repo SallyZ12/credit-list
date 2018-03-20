@@ -5,7 +5,7 @@ class CreditsController < ApplicationController
    get '/credits' do
      if logged_in?
       @credits = Credit.all
-      erb :'/credits/credits'
+      erb :'/credits/all_credits'
     else
       redirect '/login'
     end
@@ -27,7 +27,7 @@ class CreditsController < ApplicationController
        else
          @credit = current_user.credits.build(credit_name: params[:credit_name], sector: params[:sector], rating: params[:rating])
          @credit.save
-    
+
         redirect "/credits/#{@credit.id}"
       end
     end
