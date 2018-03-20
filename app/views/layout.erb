@@ -9,9 +9,9 @@
   <nav>
     <%= yield %>
   <% if logged_in? %>
-<p> Add a <%=current_user.username%> <a href="/credits/new"> New Credit</a> </br>
-<p> View Only <%=current_user.username%> Credits <a href= "/users/<%= current_user.username %>">Select</a></p>
- <p> <a href= "/credits"> Select </a> To View Credits By All Users </P>
+<p> <%=current_user.username%> <a href="/credits/new"> New Credit</a> </br>
+<p> <%=current_user.username%>  <a href= "/users/<%= current_user.username %>">Only Credits</a></p>
+ <p> <a href= "/credits"> All Credits By All Users</a>  </P>
 <a href="/logout"> Log Out </a>
 
 <% else %>

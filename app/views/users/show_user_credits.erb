@@ -4,7 +4,7 @@
 
 <% current_user.credits.order("credit_name").each do |credit|%>
 
-<li> Credit Name <a href= "credits/<%=credit.id%>"><%=credit.credit_name%> </a> <p> Credit Sector: <%=credit.sector%>,      Credit Rating: <%=credit.rating%></p></li>
+<li> Credit Name <a href= "/credits/<%=credit.id%>"><%=credit.credit_name%> </a> <p> Credit Sector: <%=credit.sector%>,      Credit Rating: <%=credit.rating%></p></li>
 
 <%end%>
 
