@@ -29,7 +29,7 @@ end
           @transaction = transactions.build(name: params[:transaction][:name], series: params[:transaction][:series], par: params[:transactions][:par])
 
             if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
-              @transaction.credits = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
+              @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
         end
           @transaction.save
           redirect "/transactions/#{@transaction.id}"
