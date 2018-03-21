@@ -26,9 +26,10 @@ class CreditsController < ApplicationController
          flash[:message] = "Missing Data - Try Again"
          redirect '/credits/new'
        else
-         @credit = current_user.credits.build(credit_name: params["credit"]["credit_name"], sector: params["credit"]["sector"], rating: params["credit"]["rating"])
-         if !params["transaction"]["name"].empty? || !params["transaction"]["series"].empty?
-         @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transactions"]["par"])
+         @credit = current_user.credits.create[:credit]
+         if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty?
+
+         @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transaction"]["par"])
        end
         @credit.save
 
@@ -59,15 +60,16 @@ class CreditsController < ApplicationController
 
    patch '/credits/:id' do
      if logged_in?
-        if params[:credit_name] == ""|| params[:sector] == "" || params[:rating] == ""
+        if params[:credit][:credit_name] == ""|| params[:credit][:sector] == "" || params[:credit][:rating] == ""
           redirect "/credits/#{params[:id]}/edit"
         else
           @credit = Credit.find_by_id(params[:id])
             if @credit.user_id == current_user.id
-              if @credit.update(credit_name: params[:credit_name], sector: params[:sector], rating: params[:rating])
+              if @credit.update(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
                 flash[:message] = "Credit Edited"
                 redirect "/credits/#{@credit.id}"
-              else redirect "/credits/#{@credit.id}/edit"
+              else
+                redirect "/credits/#{@credit.id}/edit"
               end
           else
             redirect '/credits'
