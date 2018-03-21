@@ -1,14 +1,11 @@
 <h3> Hello, <%=current_user.username%> </h3>
 
-<p> Your List of Credits Follows: </p>
+<p> Your List of Credits: </p>
 
 <h4 style = "color:red;"><% if flash.has?(:message) %>
 <%= flash[:message] %>
 <% end %></h4>
 
-<% current_user.credits.order("credit_name").each do |credit|%>
-
- <a href= "/credits/<%=credit.id%>"></a>
 <head>
  <style>
  table, th, td {
@@ -16,21 +13,22 @@
  }
  </style>
  </head>
- <table style="width:50%">
-   <tr>
-     <th id="credit_name">Credit Name</th>
-     <th id="sector">Sector</th>
-     <th id="rating">Rating</th>
-   </tr>
-   <tr>
-     <td headers="credit_name"><a href="/credits/<%=credit.id%>"><%=credit.credit_name%> </td>
-     <td headers="sector"><%=credit.sector%></td>
-     <td headers="phone"><%=credit.rating%></td>
- </td>
-   </tr>
- </table>
-<%end%>
+<table>
+  <table style="width:50%">
 
+      <tr>
+          <th> Credit Name </th>
+          <th> Sector </th>
+          <th> Rating </th>
+      </tr>
+      <tr>
+        <% current_user.credits.order("credit_name").each do |credit|%>
+        <td> <a href= "/credits/<%=credit.id%>"><%=credit.credit_name%></a></td>
+          <td> <%=credit.sector%> </td>
+          <td> <%=credit.rating%> </td>
+        </tr>
+    <%end%>
+  </table>
 </br>
 
 <label> Select a Credit to Edit or Delete </label>

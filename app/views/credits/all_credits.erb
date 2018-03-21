@@ -3,7 +3,27 @@
 <label> All Credits! </label>
 
 </br></br>
+<head>
+ <style>
+ table, th, td {
+     border: 1px solid blue;
+ }
+ </style>
+ </head>
+<table>
+  <table style="width:50%">
 
-<%@credits.order("credit_name").each do |credit|%>
-<li> <%= credit.credit_name %> </li>
-<%end%>
+      <tr>
+          <th> Credit Name </th>
+          <th> Sector </th>
+          <th> Rating </th>
+      </tr>
+      <tr>
+
+      <%@credits.order("credit_name").each do |credit|%>
+          <td> <%= credit.credit_name %> </td>
+          <td> <%=credit.sector%> </td>
+          <td> <%=credit.rating%> </td>
+       </tr>
+   <%end%>
+ </table>
