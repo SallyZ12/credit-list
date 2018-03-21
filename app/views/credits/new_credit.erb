@@ -10,9 +10,9 @@
 
   <h3> Credit Information </h3>
 </br>
-  <label> Credit Name <input type= "text" name = "credit_name"></label>
+  <label> Credit Name <input type= "text" name = "credit[credit_name]"></label>
 </br></br>
-<label> Sector <input list= "sector" name = "sector">
+<label> Sector <input list= "sector" name = "credit[sector]">
   <datalist id ="sector">
     <option value = "">
       <option value = "excise tax">
@@ -23,7 +23,7 @@
                 <option value = "lease">
                   </datalist> </label>
 </br></br>
-<label> Rating  <input list= "rating" name = "rating">
+<label> Rating  <input list= "rating" name = "credit[rating]">
   <datalist id ="rating">
     <option value= "">
       <option value= "AAA">
@@ -33,6 +33,13 @@
               <option value= "Not Investment Grade">
                 </datalist> </label>
   </br></br>
+
+  <label> Create a New Transaction: </label>
+</br>
+<input type= "text" name ="transaction[name]">
+<input type= "text" name = "transction[series]">
+<input type= "integer" name = "transaction[par]">
+
   <input type = "submit" value = "New Credit">
 
 </form>

@@ -9,4 +9,12 @@ class TransactionsController < ApplicationController
   end
 
 
+  get '/transactions/new' do
+    @credits = Credit.all
+    erb :'/transactions/new_transaction'
+  else
+    redirect '/login'
+  end
+
+
 end
