@@ -27,8 +27,8 @@ class CreditsController < ApplicationController
          redirect '/credits/new'
        else
          @credit = current_user.credits.build(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
-         if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty?
-        
+         if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
+
          @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transaction"]["par"])
        end
         @credit.save

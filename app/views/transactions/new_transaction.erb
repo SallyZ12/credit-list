@@ -1,0 +1,30 @@
+<h3> <%= current_user.username%>'s New Transaction</h3>
+
+<h4 style = "color:red;"><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h4>
+
+</br> </br>
+
+
+<form action = "/transactions" method = "POST" >
+
+  <label> Create a New Transaction: </label>
+</br></br>
+<label> Transaction Name <input type= "text" name ="transaction[name]"></label></br></br>
+<label> Series <input type= "text" name = "transaction[series]"></label> </br></br>
+<label> Par <input type= "integer" name = "transaction[par]"></label> </br></br>
+
+ <label> Choose an Existing Credit:</label>
+
+   <%current_user.credits.each do |credit|%>
+    <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"
+    value ="<%=credit.id%>">
+    <li> <%=credit.credit_name%></li></input>
+    <%end%>
+
+  </br></br>
+
+  <input type= "submit" value = "New Transaction">
+
+</form>

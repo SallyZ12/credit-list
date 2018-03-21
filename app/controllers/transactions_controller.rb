@@ -1,3 +1,4 @@
+require 'pry'
 class TransactionsController < ApplicationController
   use Rack::Flash
 
@@ -20,13 +21,16 @@ end
 
   post '/transactions' do
     if logged_in?
-    @transaction = Transaction.create[:transaction]
-    if !params[:credit][:name].empty? & !params[:credit][:sector].empty? & !params[:credit][:rating].empty?
-      @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name])
-    end
-    @transaction.save
+        if params[:transaction][:name]== "" || params[:transaction][:series] == "" || params[:transaction][:par] == ""
+          redirect '/transactions/new'
+        else
+      @transaction = current_user.transaction.create[name: params[:transaction][:name], series: params[:transaction][:series], par: params[:transactions][:par]]
+        @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
+          @transaction.save
     redirect "/transactions/#{@transaction.id}"
+    end
   end
+end
 
   get '/transactions/:id' do
     if logged_in?
