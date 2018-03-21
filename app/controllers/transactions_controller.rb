@@ -24,7 +24,7 @@ end
         if params[:transaction][:name]== "" || params[:transaction][:series] == "" || params[:transaction][:par] == ""
           flash[:message] = "Missing Data - Try Again"
           redirect '/transactions/new'
-          binding.pry
+
         else
           @transaction = transactions.build(name: params[:transaction][:name], series: params[:transaction][:series], par: params[:transactions][:par])
 
