@@ -26,10 +26,8 @@ end
           redirect '/transactions/new'
         else
           @transaction = Transaction.create(params[:transaction])
-          # binding.pry
-
-
-          @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
+          
+          @transaction.credit = Credit.create(credit_name: params[:transaction][:credit_name], sector: params[:transaction][:sector], rating: params[:transaction][:rating])
 
           @transaction.save
 
