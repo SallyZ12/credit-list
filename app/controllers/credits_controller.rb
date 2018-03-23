@@ -22,7 +22,7 @@ class CreditsController < ApplicationController
 
    post '/credits' do
      if logged_in?
-       if params[:credit][:credit_name]== ""|| params[:credit][:sector] == "" || params[:credit][:rating] == ""
+       if params[:credit][:credit_name]== ""|| params[:credit][:sector] == "" || params[:credit][:rating] == "" || params[:transaction][:name] == "" || params[:transaction][:series] == "" || params[:transaction][:par] == ""
          flash[:message] = "Missing Data - Try Again"
          redirect '/credits/new'
        else
@@ -31,7 +31,7 @@ class CreditsController < ApplicationController
            @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transaction"]["par"])
        end
         @credit.save
-        
+        binding.pry
         redirect "/credits/#{@credit.id}"
       end
     end

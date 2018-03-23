@@ -10,7 +10,11 @@
 <h4> Credit Name: <%= @credit.credit_name %> </h4> <h4>Credit Sector: <%= @credit.sector %> </h4>
 <h4> Credit Rating: <%= @credit.rating %> </h4>
 
-<h4> Transaction Name: <%= @transaction.name %> </h4>
+<h4> Transaction Name:
+
+  <%@credit.transactions.each do |transaction|%>
+  <%=transaction.name%>, <%=transaction.series%>, <%=transaction.par%>
+  <%end%>
 
 
 <form action= "/credits/<%=@credit.id%>/delete" method = "POST">
@@ -29,7 +33,7 @@
 <label> To View <%=@credit.credit_name%>'s Credit Transactions</label>
 <a href ="/transactions/show_transaction">"View Transactions"</a>
 </br></br>
-<label> To Create a New Transaction for this Credit: <%=@credit.credit_name%> </label>
+<label> To Create a New Transaction for Existing Credits: </label>
 <a href ="/transactions/new"> "New Transaction" </a>
 </br></br>
 
