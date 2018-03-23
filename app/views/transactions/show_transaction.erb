@@ -1,4 +1,4 @@
-<h4> show_transaction.erb</h4>
+<h4> All <%=current_user.username%> Transactions</h4>
 
 
 </br></br>
@@ -19,7 +19,7 @@
     </tr>
     <tr>
 
-    <%Transaction.all.each do |transaction|%>
+    <%Transaction.all.order("name").each do |transaction|%>
 
     <td> <%= transaction.name%> </td>
     <td> <%= transaction.series%>  </td>
