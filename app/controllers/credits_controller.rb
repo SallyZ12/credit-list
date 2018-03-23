@@ -26,12 +26,13 @@ class CreditsController < ApplicationController
          flash[:message] = "Missing Data - Try Again"
          redirect '/credits/new'
        else
+
          @credit = current_user.credits.build(params[:credit])
          if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
            @credit.transactions << Transaction.create(params[:transaction])
        end
         @credit.save
-        binding.pry
+      
         redirect "/credits/#{@credit.id}"
       end
     end

@@ -29,7 +29,7 @@ end
           @transaction.credit = Credit.create(params[:credit])
 
           @transaction.save
-          binding.pry
+    
           redirect "/transactions/#{@transaction.id}"
     end
   end
