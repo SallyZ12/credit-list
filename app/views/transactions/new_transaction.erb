@@ -15,9 +15,9 @@
    <p><%current_user.credits.each do |credit|%></p>
       <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"  value ="<%=credit.id%>">
 
-          <input type="hidden" name="credit_name" value="<%=credit.credit_name%>">
-            <input type="hidden" name="sector" value="<%=credit.sector%>">
-            <input type="hidden" name="rating" value="<%=credit.rating%>">
+          <input type="hidden" name="credit[credit_name]" value="<%=credit.credit_name%>">
+            <input type="hidden" name="credit[sector]" value="<%=credit.sector%>">
+            <input type="hidden" name="credit[rating]" value="<%=credit.rating%>">
 
     <%=credit.credit_name%>,   <%=credit.sector%>,  <%=credit.rating%></input></br>
     <%end%>
