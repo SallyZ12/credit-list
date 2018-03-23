@@ -1,0 +1,24 @@
+<h2> Credit: <h2><%=@transaction.credit%></h2>
+
+
+<h3> Edit Transaction: <%= @transaction.name%>,  <%=@transaction.series%>,   $<%=@transaction.par%> MM </h4></h4>
+
+
+  <form action = "/transactions/<%= @transaction.id %>" method = "POST">
+    <input id = "hidden" type = "hidden" name = "_method" value = "patch">
+
+<label> Name: <input type = "text" name = "transaction[name]" value = "<%= @transaction.name%>"></input></label>
+<label> Series:<input type = "text" name = "transaction[series]" value = "<%= @transaction.series%>"></input></label>
+<label> Par: <input type = "text" name = "transaction[par]" value = "<%= @transaction.par%>"></input></label>
+
+
+
+
+
+  <input type = "submit" value = "Edit Transaction">
+
+
+</form>
+
+
+</br></br></br></br>

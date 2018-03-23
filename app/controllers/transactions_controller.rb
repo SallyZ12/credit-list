@@ -24,10 +24,9 @@ end
         if params[:transaction][:name]== "" || params[:transaction][:series] == "" || params[:transaction][:par] == ""
           flash[:message] = "Missing Data - Try Again"
           redirect '/transactions/new'
-
         else
           @transaction = Transaction.create(params[:transaction])
-            if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
+            if !params["credit"]["credit_name"].empty? & !params["credit"]["sector"].empty? & !params["credit"]["rating"].empty?
 
           @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
         end
@@ -51,15 +50,15 @@ end
   get '/transactions/:id/edit' do
     if logged_in?
       @transaction = Transaction.find_by_id(params[:id])
-      if @credit.user_id == current_user.id
+
         erb :'/transactions/edit_transaction'
-      end
+
     else
         redirect '/login'
       end
     end
 
-    patch '/transaction/:id' do
+    patch '/transactions/:id' do
       if logged_in?
         if params[:transaction][:name] == ""|| params[:transactions][:series] == "" || params[:transactions][:par] == ""
           redirect "/credits/#{params[:id]}/edit"
