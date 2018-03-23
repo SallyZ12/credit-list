@@ -1,10 +1,12 @@
 <h3> <%= current_user.username%>'s New Credit</h3>
+<h4> When You Create a New Credit You Must Create a Transaction at the Same Time</h4>
+<h4> Once You Create a Credit You May Add Transactions to that existing Credit </h4>
 
 <h4 style = "color:red;"><% if flash.has?(:message) %>
 <%= flash[:message] %>
 <% end %></h4>
 
-</br> </br>
+</br> 
 
 <form action = "/credits" method = "POST" >
 

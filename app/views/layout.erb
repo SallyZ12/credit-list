@@ -9,13 +9,14 @@
   <nav>
     <%= yield %>
   <% if logged_in? %>
-<p> <%=current_user.username%> <a href="/credits/new"> New Credit</a> </br>
-<p> <%=current_user.username%>  <a href= "/users/<%= current_user.username %>">Only Credits</a></p>
+<p> <%=current_user.username%>'s <a href="/credits/new"> Create New Credit</a> </br>
+<p> <%=current_user.username%>'s  <a href= "/users/<%= current_user.username %>">Credits Only</a></p>
  <p> <a href= "/credits"> All Credits By All Users</a>  </P>
 <a href="/logout"> Log Out </a>
 
 <% else %>
-<p> Please <a href="/signup">Register</a>      (If You Have Not)</p>
+</br></br></br>
+<p> Please <a href="/signup">Sign-Up</a>      (If You Have Not)</p>
 <p> Please <a href="/login"> Log In </a></P>
 <%end %>
 

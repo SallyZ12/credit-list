@@ -20,7 +20,7 @@
    <%current_user.credits.each do |credit|%>
     <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"
     value ="<%=credit.id%>">
-    <li> <%=credit.credit_name%></li></input>
+    <li> <%=credit.credit_name%>   <%=credit.sector%></li></input>
     <%end%>
 
   </br></br>

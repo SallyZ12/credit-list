@@ -30,6 +30,7 @@ class CreditsController < ApplicationController
          if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
            @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transaction"]["par"])
        end
+       binding.pry
         @credit.save
         redirect "/credits/#{@credit.id}"
       end
@@ -58,9 +59,9 @@ class CreditsController < ApplicationController
 
    patch '/credits/:id' do
      if logged_in?
-        if params[:credit][:credit_name] == ""|| params[:credit][:sector] == "" || params[:credit][:rating] == ""
-          redirect "/credits/#{params[:id]}/edit"
-        else
+       if params[:credit][:credit_name] == "" || params[:credit][:sector] == "" || params[:credit][:rating] == ""
+         redirect "/credits/#{params[:id]}/edit"
+       else
           @credit = Credit.find_by_id(params[:id])
             if @credit.user_id == current_user.id
               if @credit.update(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
