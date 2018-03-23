@@ -19,7 +19,7 @@
     </tr>
     <tr>
 
-    <%Transaction.all.order("name").each do |transaction|%>
+    <%Transaction.all.each do |transaction|%>
 
     <td> <%= transaction.name%> </td>
     <td> <%= transaction.series%>  </td>

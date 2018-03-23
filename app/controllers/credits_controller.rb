@@ -26,9 +26,9 @@ class CreditsController < ApplicationController
          flash[:message] = "Missing Data - Try Again"
          redirect '/credits/new'
        else
-         @credit = current_user.credits.build(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
+         @credit = current_user.credits.build(params[:credit])
          if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
-           @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transaction"]["par"])
+           @credit.transactions << Transaction.create(params[:transaction])
        end
         @credit.save
         binding.pry
