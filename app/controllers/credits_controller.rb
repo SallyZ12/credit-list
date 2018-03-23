@@ -30,8 +30,8 @@ class CreditsController < ApplicationController
          if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
            @credit.transactions << Transaction.create(name: params["transaction"]["name"], series: params["transaction"]["series"], par: params["transaction"]["par"])
        end
-       binding.pry
         @credit.save
+        
         redirect "/credits/#{@credit.id}"
       end
     end

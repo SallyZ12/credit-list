@@ -1,4 +1,4 @@
-<h4> show_credit</h>
+<h4> show_credit.erb(for process purposes for now)</h>
 <h3> Hello, <%=current_user.username%> </h3>
 
 <h4 style = "color:red;"><% if flash.has?(:message) %>
@@ -10,7 +10,7 @@
 <h4> Credit Name: <%= @credit.credit_name %> </h4> <h4>Credit Sector: <%= @credit.sector %> </h4>
 <h4> Credit Rating: <%= @credit.rating %> </h4>
 
-<h4> Transaction Name: <%=@credit.transactions.name%> </h4>
+<h4> Transaction Name: <%= %> </h4>
 
 
 <form action= "/credits/<%=@credit.id%>/delete" method = "POST">

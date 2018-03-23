@@ -26,10 +26,11 @@ end
           redirect '/transactions/new'
         else
           @transaction = Transaction.create(params[:transaction])
-            if !params["credit"]["credit_name"].empty? & !params["credit"]["sector"].empty? & !params["credit"]["rating"].empty?
+          # binding.pry
+
 
           @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
-        end
+
           @transaction.save
 
           redirect "/transactions/#{@transaction.id}"
@@ -50,7 +51,6 @@ end
   get '/transactions/:id/edit' do
     if logged_in?
       @transaction = Transaction.find_by_id(params[:id])
-
         erb :'/transactions/edit_transaction'
 
     else
@@ -64,21 +64,15 @@ end
           redirect "/credits/#{params[:id]}/edit"
         else
           @transaction = Transaction.find_by_id(params[:id])
-            if @credit.user_id == current_user.id
-              if @transaction.update(name: params[:transaction][:name], series: params[:transaction][:series], par: [:transaction][:par])
+              @transaction.update(name: params[:transaction][:name], series: params[:transaction][:series], par: [:transaction][:par])
                 flash[:message] = "Transaction Edited"
                 redirect "/transactions/#{@transaction.id}"
-              else
-                "/transactions/#{@transaction.id}/edit"
-              end
-            else
-              redirect '/transactions'
-            end
           end
-        else
-          redirect '/login'
+
+        redirect '/login'
+      end
     end
-  end
+
 
 
     delete '/transactions/:id/delete' do
