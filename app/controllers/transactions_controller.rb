@@ -29,7 +29,7 @@ end
           @transaction.credit = Credit.create(params[:credit])
 
           @transaction.save
-    
+
           redirect "/transactions/#{@transaction.id}"
     end
   end
@@ -57,11 +57,11 @@ end
 
     patch '/transactions/:id' do
       if logged_in?
-        if params[:transaction][:name] == ""|| params[:transactions][:series] == "" || params[:transactions][:par] == ""
+        if params[:transaction][:name] == ""|| params[:transaction][:series] == "" || params[:transaction][:par] == ""
           redirect "/credits/#{params[:id]}/edit"
         else
           @transaction = Transaction.find_by_id(params[:id])
-              @transaction.update(name: params[:transaction][:name], series: params[:transaction][:series], par: [:transaction][:par])
+              @transaction.update(name: params[:transaction][:name], series: params[:transaction][:series], par: params[:transaction][:par])
                 flash[:message] = "Transaction Edited"
                 redirect "/transactions/#{@transaction.id}"
           end
