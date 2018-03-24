@@ -13,17 +13,21 @@
   <table style="width:50%">
 
     <tr>
+        <th> Credit </th>
         <th> Transaction Name </th>
         <th> Series </th>
         <th> Par </th>
+
     </tr>
     <tr>
 
-    <%Transaction.all.order("name").each do |transaction|%>
+    <%Transaction.all.each do |transaction|%>
 
+    <td> <%= transaction.credit_id %> </td>
     <td> <%= transaction.name%> </td>
     <td> <%= transaction.series%>  </td>
     <td> <%= transaction.par%>  </td>
+
   </tr>
     <%end%>
   </table>
