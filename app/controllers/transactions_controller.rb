@@ -21,7 +21,7 @@ end
 
   post '/transactions' do
     if logged_in?
-        if params[:transaction][:name]== "" || params[:transaction][:series] == "" || params[:transaction][:par] == ""
+        if params[:transaction][:name]== "" || params[:transaction][:series] == ""
           flash[:message] = "Missing Data - Try Again"
           redirect '/transactions/new'
         else
@@ -57,11 +57,11 @@ end
 
     patch '/transactions/:id' do
       if logged_in?
-        if params[:transaction][:name] == ""|| params[:transaction][:series] == "" || params[:transaction][:par] == ""
+        if params[:transaction][:name] == ""|| params[:transaction][:series] == ""
           redirect "/credits/#{params[:id]}/edit"
         else
           @transaction = Transaction.find_by_id(params[:id])
-              @transaction.update(name: params[:transaction][:name], series: params[:transaction][:series], par: params[:transaction][:par])
+              @transaction.update(name: params[:transaction][:name], series: params[:transaction][:series])
                 flash[:message] = "Transaction Edited"
                 redirect "/transactions/#{@transaction.id}"
           end

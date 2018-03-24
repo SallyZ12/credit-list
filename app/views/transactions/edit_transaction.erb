@@ -1,7 +1,7 @@
 <h2> Credit: <h2><%=@transaction.credit%></h2>
 
 
-<h3> Edit Transaction: <%= @transaction.name%>,  <%=@transaction.series%>,   $<%=@transaction.par%> MM </h4></h4>
+<h3> Edit Transaction: <%= @transaction.name%>,  <%=@transaction.series%> </h4>
 
 
   <form action = "/transactions/<%= @transaction.id %>" method = "POST">
@@ -11,7 +11,6 @@
 </br></br>
 <label> Series:<input type = "text" name = "transaction[series]" value = "<%= @transaction.series%>"></input></label>
 </br></br>
-<label> Par: <input type = "text" name = "transaction[par]" value = "<%= @transaction.par%>"></input></label>
 
 
 

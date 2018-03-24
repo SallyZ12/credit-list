@@ -22,17 +22,17 @@ class CreditsController < ApplicationController
 
    post '/credits' do
      if logged_in?
-       if params[:credit][:credit_name]== ""|| params[:credit][:sector] == "" || params[:credit][:rating] == "" || params[:transaction][:name] == "" || params[:transaction][:series] == "" || params[:transaction][:par] == ""
+       if params[:credit][:credit_name]== ""|| params[:credit][:sector] == "" || params[:credit][:rating] == "" || params[:transaction][:name] == "" || params[:transaction][:series] == ""
          flash[:message] = "Missing Data - Try Again"
          redirect '/credits/new'
        else
 
          @credit = current_user.credits.build(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
-         if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty? & !params["transaction"]["par"].empty?
+         if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty?
            @credit.transactions << Transaction.create(params[:transaction])
        end
         @credit.save
-  
+
         redirect "/credits/#{@credit.id}"
       end
     end
