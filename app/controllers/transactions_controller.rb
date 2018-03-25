@@ -23,6 +23,7 @@ end
     if logged_in?
         if params[:transaction][:name]== "" || params[:transaction][:series] == ""
           flash[:message] = "Missing Data - Try Again"
+      
           redirect '/transactions/new'
         else
           @transaction = Transaction.create(params[:transaction])
@@ -32,7 +33,7 @@ end
               @transaction.credit = Credit.create(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
           end
           @transaction.save
-
+    
           redirect "/transactions/#{@transaction.id}"
     end
   end
