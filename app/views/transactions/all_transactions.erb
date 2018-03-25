@@ -18,8 +18,10 @@
   <table style="width:50%">
 
     <tr>
+        <th> Credit ID </th>
         <th> Transaction Name </th>
         <th> Series </th>
+
 
     </tr>
     <tr>
@@ -27,8 +29,10 @@
 
     <%@transactions.order("name").each do |transaction|%>
 
+    <td> <%= transaction.credit_id %> </td>
     <td> <%= transaction.name%> </td>
     <td> <%= transaction.series%>  </td>
+  
 
   </tr>
     <%end%>
