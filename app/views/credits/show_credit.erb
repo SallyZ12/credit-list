@@ -15,7 +15,7 @@
   <%transaction_id = @credit.transaction_ids.join%>
   <li> <a href="/transactions/<%=transaction.id%>"> <%=transaction.name%>, <%=transaction.series%> </a></li>
   <%end%>
-<h4> To Edit a Transaction, Select the Transaction </h4>
+<h4> To Edit or Delete a Transaction, Select the Transaction </h4>
 
 
 <form action= "/credits/<%=@credit.id%>/delete" method = "POST">

@@ -80,7 +80,7 @@ end
         @transaction = Transaction.find_by_id(params[:id])
             @transaction.delete
               flash[:message] = "Transaction Deleted"
-                redirect '/transactions/all_transactions'
+                redirect '/transactions'
               else
                 redirect '/login'
               end

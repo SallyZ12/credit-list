@@ -11,7 +11,8 @@
   <% if logged_in? %>
 <p> <%=current_user.username%>'s <a href="/credits/new"> Create New Credit</a> </br>
 <p> <%=current_user.username%>'s  <a href= "/users/<%= current_user.username %>">Credits Only</a></p>
- <p> <a href= "/credits"> All Credits By All Users</a>  </P>
+ <p> <a href= "/credits"> All Credits By All Users</a>  </p>
+ <p> <a href= "/transactions"> All Transactions For All Credits</a> </p>
 <a href="/logout"> Log Out </a>
 
 <% else %>
