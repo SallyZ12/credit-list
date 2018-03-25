@@ -10,7 +10,7 @@
 
 <form action = "/transactions" method = "POST" >
 
-  <label> You Must Select an Existing Credit:</label>
+  <h3> You Must Select an Existing Credit:</h3>
 
    <p><%current_user.credits.each do |credit|%></p>
       <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"  value = "<%=credit.id%>"

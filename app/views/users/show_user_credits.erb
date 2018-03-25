@@ -17,12 +17,14 @@
   <table style="width:50%">
 
       <tr>
+          <th> Credit ID </th>
           <th> Credit Name </th>
           <th> Sector </th>
           <th> Rating </th>
       </tr>
       <tr>
         <% current_user.credits.order("credit_name").each do |credit|%>
+          <td> <%=credit.id%> </td>
         <td> <a href= "/credits/<%=credit.id%>"><%=credit.credit_name%></a></td>
           <td> <%=credit.sector%> </td>
           <td> <%=credit.rating%> </td>
@@ -33,4 +35,4 @@
 
 
 
-<label> Select a Credit to Edit or Delete </label>
+<label> Select a Credit to Edit or Delete and To See a List of Transactions</label>

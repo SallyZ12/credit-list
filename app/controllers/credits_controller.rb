@@ -32,7 +32,6 @@ class CreditsController < ApplicationController
            @credit.transactions << Transaction.create(params[:transaction])
        end
         @credit.save
-
         redirect "/credits/#{@credit.id}"
       end
     end
@@ -84,7 +83,7 @@ class CreditsController < ApplicationController
      if logged_in?
        @credit = Credit.find_by_id(params[:id])
         if !@credit.transactions.ids.empty?
-          flash[:message] = "You Must Delete Related Transactions First"
+          flash[:message] = "To Delete A Credit You Must Delete the linked Transactions First! Select User Credits Only"
           redirect "/credits/#{@credit.id}"
         else
         if @credit.user_id == current_user.id

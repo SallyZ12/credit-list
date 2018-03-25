@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect 'users/show_user_credits'
     else
-      flash[:message] = "Login Failed, Please Try Again (You May Need to Register)"
+      flash[:message] = "Login Failed, Please Try Again (You May Need to Sign-Up)"
       redirect '/login'
     end
   end
