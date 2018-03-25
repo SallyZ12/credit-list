@@ -21,7 +21,7 @@ end
 
   post '/transactions' do
     if logged_in?
-        if params[:transaction][:name]== "" || params[:transaction][:series] == ""
+        if params[:transaction][:name]== "" || params[:transaction][:series] == "" || params[:transaction][:credit_id] == nil
 
           flash[:message] = "Missing Data - Try Again"
             redirect '/transactions/new'
