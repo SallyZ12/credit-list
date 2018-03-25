@@ -83,12 +83,19 @@ class CreditsController < ApplicationController
    delete '/credits/:id/delete' do
      if logged_in?
        @credit = Credit.find_by_id(params[:id])
+        if !@credit.transactions.ids.empty?
+          flash[:message] = "You Must Delete Related Transactions First"
+          redirect "/credits/#{@credit.id}"
+        else
         if @credit.user_id == current_user.id
+
           @credit.delete
           flash[:message] = "Credit Deleted"
+
           redirect "/users/show_user_credits"
-        else
-          redirect '/login'
+      else
+        redirect '/login'
+          end
         end
       end
     end
