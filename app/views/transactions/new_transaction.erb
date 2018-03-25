@@ -10,10 +10,10 @@
 
 <form action = "/transactions" method = "POST" >
 
-  <label> Choose an Existing Credit:</label>
+  <label> You Must Select an Existing Credit:</label>
 
    <p><%current_user.credits.each do |credit|%></p>
-      <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"  value = "" checked="checked" 
+      <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"  value = "<%=credit.id%>"
             <%= 'checked' if current_user.credits == credit %> </input>
        <input type="hidden" name="credit[credit_name]" value="<%=credit.credit_name%>">
          <input type="hidden" name="credit[sector]" value="<%=credit.sector%>">
