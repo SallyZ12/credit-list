@@ -32,7 +32,7 @@ class CreditsController < ApplicationController
            @credit.transactions << Transaction.create(params[:transaction])
        end
         @credit.save
-      
+    
         redirect "/credits/#{@credit.id}"
       end
     end

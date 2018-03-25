@@ -78,14 +78,13 @@ end
     delete '/transactions/:id/delete' do
       if logged_in?
         @transaction = Transaction.find_by_id(params[:id])
-          if @credit.user_id == current_user.id
             @transaction.delete
               flash[:message] = "Transaction Deleted"
-                redirect "/user/show_user_credits"
+                redirect '/transactions/all_transactions'
               else
                 redirect '/login'
               end
-            end
           end
+
 
 end

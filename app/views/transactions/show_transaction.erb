@@ -1,3 +1,30 @@
 <h4>  <%=current_user.username%>'s New Transaction</h4>
 
+
+<h4 style = "color:red;"><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h4>
+
+
+
 <li> <%=@transaction.name%>, <%=@transaction.series%> </li>
+
+
+
+<form action= "/transactions/<%=@transaction.id%>/delete" method = "POST">
+  <input id = "hidden" type = "hidden" name = "_method" value = "delete">
+</input> </br>
+</br></br></br>
+<label> Select to Delete This Transaction:</label>
+<input type = "submit" value = "Delete Transaction"></br></br>
+
+</form>
+
+<label> To Edit This Transaction Select: </label>
+<a href ="/transactions/<%=@transaction.id%>/edit"> "Edit Transaction"</a>
+</br>
+</br>
+
+<label> Add Another Transaction: </label>
+<a href ="/transactions/new" >  "New Transaction" </a>
+</br></br></br>
