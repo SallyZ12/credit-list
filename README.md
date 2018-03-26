@@ -6,6 +6,7 @@ To use this app:
 2. change directory (cd) into the directory credit-list,
 3. run bundle install
 4. run shotgun.
+5. If you choose to delete the database and start fresh: (a) delete development.sqlite file, (b) run rake db:migrate
 
 Overview:
 
