@@ -21,10 +21,14 @@ end
 
   post '/transactions' do
     if logged_in?
-        if params[:transaction][:name]== "" || params[:transaction][:series] == "" || params[:transaction][:credit_id] == nil
-
-          flash[:message] = "Missing Data - Try Again"
+        if  params[:transaction][:credit_id] == nil
+          flash[:message] = "You Must Select a Credit"
             redirect '/transactions/new'
+          else
+
+          if params[:transaction][:name]== "" || params[:transaction][:series] == ""
+              flash[:message] = "You Must Enter Transaction Information"
+                redirect '/transactions/new'
         else
           @transaction = Transaction.create(params[:transaction])
             if !params["credit"]["credit_name"].empty? & !params["credit"]["sector"].empty? & !params["credit"]["rating"].empty?
@@ -35,6 +39,7 @@ end
               @transaction.save
 
           redirect "/transactions/#{@transaction.id}"
+        end
     end
   end
 end
