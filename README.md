@@ -17,3 +17,7 @@ The first time a credit is created a transaction must be created at that time.
 A credit can not be deleted if there are any associated transactions, you must delete any credit related transactions first.
 To edit or delete a credit, select User Credits Only and select a transaction link.
 All information related to a Credit and/or Transaction must be entered otherwise creating a Credit and/or Transaction is prohibited.
+
+
+
+MIT License: https://github.com/SallyZ12/credit-list/blob/master/LICENSE
