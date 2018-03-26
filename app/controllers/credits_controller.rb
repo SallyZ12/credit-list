@@ -21,6 +21,7 @@ class CreditsController < ApplicationController
    end
 
    post '/credits' do
+
      if logged_in?
        if params[:credit][:credit_name]== ""|| params[:credit][:sector] == "" || params[:credit][:rating] == "" || params[:transaction][:name] == "" || params[:transaction][:series] == ""
          flash[:message] = "Missing Data - Try Again"
