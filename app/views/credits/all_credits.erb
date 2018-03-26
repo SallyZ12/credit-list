@@ -18,6 +18,7 @@
           <th> Credit Name </th>
           <th> Sector </th>
           <th> Rating </th>
+          <th> User Name </th>
       </tr>
       <tr>
 
@@ -26,6 +27,7 @@
           <td> <%= credit.credit_name %> </td>
           <td> <%=credit.sector%> </td>
           <td> <%=credit.rating%> </td>
+          <td> <%=credit.user.username%> </td>
        </tr>
    <%end%>
  </table>
