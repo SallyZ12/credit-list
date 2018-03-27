@@ -8,10 +8,15 @@
 <body>
 
 </br>
+<div class="container">
+  <h1>Credit List</h1>
+  <%= yield %>
+</br><br>
+</div>
+
   <nav>
-    <%= yield %>
   <% if logged_in? %>
-<p> <%=current_user.username%> <a href="/credits/new"> Create New Credit</a> </br>
+<p> <%=current_user.username%> <a href="/credits/new"> Create New Credit</a> </p>
 <p> <%=current_user.username%>'s  <a href= "/users/<%= current_user.username %>">Credits Only</a></p>
  <p> <a href= "/credits"> All Credits By All Users</a>  </p>
  <p> <a href= "/transactions"> All Transactions For All Credits</a> </p>
@@ -23,9 +28,7 @@
 <p> Please <a href="/login"> Log In </a></P>
 <%end %>
 </nav>
-<div class="container">
-  <h1>Credit List</h1>
-</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
