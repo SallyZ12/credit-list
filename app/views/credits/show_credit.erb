@@ -11,10 +11,9 @@
 
 <h5> Transaction Name(s): </h4>
 
-  <%@credit.transactions.each do |transaction|%>
-  <%transaction_id = @credit.transaction_ids.join%>
-  <li> <a href="/transactions/<%=transaction.id%>"> <%=transaction.name%>, <%=transaction.series%> </a></li>
-  <%end%></br></br>
+  <%@credit.transactions.each_with_index do |transaction, index|%>
+  <ul> <%= index + 1 %>. <a href="/transactions/<%=transaction.id%>"> <%=transaction.name%>, <%=transaction.series%> </a></ul>
+  <%end%></br>
 <p> To Edit or Delete a Transaction, Select the Transaction </p>
 
 
