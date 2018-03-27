@@ -6,16 +6,16 @@
 
 
 
-<h4> Credit Name: <%= @credit.credit_name %> </h4> <h4>Credit Sector: <%= @credit.sector %> </h4>
-<h4> Credit Rating: <%= @credit.rating %> </h4>
+<h5> Credit Name: <%= @credit.credit_name %> </h5> <h5>Credit Sector: <%= @credit.sector %> </h5>
+<h5> Credit Rating: <%= @credit.rating %> </h5>
 
-<h4> Transaction Name(s): </h4>
+<h5> Transaction Name(s): </h4>
 
   <%@credit.transactions.each do |transaction|%>
   <%transaction_id = @credit.transaction_ids.join%>
   <li> <a href="/transactions/<%=transaction.id%>"> <%=transaction.name%>, <%=transaction.series%> </a></li>
-  <%end%>
-<h4> To Edit or Delete a Transaction, Select the Transaction </h4>
+  <%end%></br></br>
+<p> To Edit or Delete a Transaction, Select the Transaction </p>
 
 
 <form action= "/credits/<%=@credit.id%>/delete" method = "POST">
@@ -24,7 +24,6 @@
 </br></br></br>
 <label> Select to Delete This Credit:</label>
 <input type = "submit" value = "Delete Credit"></br></br>
-
 </form>
 
 <label> To Edit This Credit Select: </label>
@@ -34,12 +33,12 @@
 
 <label> To Create a New Transaction for Existing Credits: </label>
 <a href ="/transactions/new"> "New Transaction" </a>
-</br></br>
+</br>
 
 <label> To Create a New Transaction with a new Credit </label>
 <a href ="/credits/new"> "New Transaction with New Credit" </a>
-</br></br>
+</br>
 
 
 
-</br></br></br></br></br>
+</br></br></br>
