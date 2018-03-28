@@ -18,7 +18,7 @@
   <% if logged_in? %>
 <p> <%=current_user.username%> <a href="/credits/new"> Create New Credit With New Transaction</a> </p>
 <p> <%=current_user.username%> <a href ="/transactions/new"> Create New Transaction with Existing Credit </a></p>
-<p> <%=current_user.username%>'s  <a href= "/users/<%= current_user.username %>">Credits Only</a></p>
+<p> <%=current_user.username%>'s  <a href= "/users/<%= current_user.username %>">View Credits Only</a></p>
 </br>
  <p> <a href= "/credits"> All Credits By All Users</a>  </p>
  <p> <a href= "/transactions"> All Transactions For All Credits</a> </p>
