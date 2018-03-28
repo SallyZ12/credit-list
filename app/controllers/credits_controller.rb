@@ -88,7 +88,7 @@ class CreditsController < ApplicationController
      if logged_in?
        @credit = Credit.find_by_id(params[:id])
         if !@credit.transactions.ids.empty?
-          flash[:message] = "To Delete A Credit You Must Delete the linked Transactions First! Select the User's Credits Only"
+          flash[:message] = "To Delete A Credit You Must Delete the linked Transactions First! Select a Transaction."
           redirect "/credits/#{@credit.id}"
         else
         if @credit.user_id == current_user.id
