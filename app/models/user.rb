@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :credits
+  has_many :transactions, through: :credits
 
   has_secure_password
 
