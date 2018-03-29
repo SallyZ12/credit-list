@@ -21,9 +21,7 @@ class CreditsController < ApplicationController
    end
 
    post '/credits' do
-
      if logged_in?
-
          flash[:message] = "Credit Data Missing - Try Again"
          redirect '/credits/new'
 
@@ -32,14 +30,13 @@ class CreditsController < ApplicationController
         end
             @credit = current_user.credits.build(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
 
-            if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty?
-              @credit.transactions << Transaction.create(params[:transaction])
-
-            @credit.save
+              if !params["transaction"]["name"].empty? & !params["transaction"]["series"].empty?
+                @credit.transactions << Transaction.create(params[:transaction])
+                @credit.save
             redirect "/credits/#{@credit.id}"
           end
       end
-  
+
 
 
 
@@ -70,25 +67,26 @@ class CreditsController < ApplicationController
 
    patch '/credits/:id' do
      if logged_in?
-       if params[:credit][:credit_name] == "" || params[:credit][:sector] == "" || params[:credit][:rating] == ""
+        if params[:credit][:credit_name] == "" || params[:credit][:sector] == "" || params[:credit][:rating] == ""
          redirect "/credits/#{params[:id]}/edit"
        else
           @credit = Credit.find_by_id(params[:id])
             if @credit.user_id == current_user.id
-              if @credit.update(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
+                if @credit.update(credit_name: params[:credit][:credit_name], sector: params[:credit][:sector], rating: params[:credit][:rating])
                 flash[:message] = "Credit Edited"
                 redirect "/credits/#{@credit.id}"
               else
                 redirect "/credits/#{@credit.id}/edit"
-              end
+            end
           else
             redirect '/credits'
           end
         end
-      else
         redirect '/login'
-      end
-   end
+  end
+end
+
+
 
    delete '/credits/:id/delete' do
      if logged_in?
