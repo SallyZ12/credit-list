@@ -44,8 +44,13 @@ class CreditsController < ApplicationController
 
    get '/credits/:id' do
      if logged_in?
-       @credit = Credit.find_by_id(params[:id])
-       erb :'/credits/show_credit'
+         @credit = Credit.find_by_id(params[:id])
+        if @credit.user_id != current_user.id
+          flash[:message] = "Access Denied"
+          redirect '/'
+        else
+          erb :'/credits/show_credit'
+        end
      else
        redirect '/login'
      end
