@@ -30,7 +30,7 @@ end
               flash[:message] = "You Must Enter Transaction Information"
                 redirect '/transactions/new'
         else
-          @transaction = Transaction.create(params[:transaction])
+          @transaction = Transaction.new(params[:transaction])
             if !params["credit"]["credit_name"].empty? & !params["credit"]["sector"].empty? & !params["credit"]["rating"].empty?
             @transaction.save
           else
