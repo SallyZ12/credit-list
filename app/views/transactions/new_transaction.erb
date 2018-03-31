@@ -12,7 +12,7 @@
 
   <h3> You Must Select an Existing Credit:</h3>
 
-   <p><%current_user.credits.each do |credit|%></p>
+   <p><%current_user.credits.order("credit_name").each do |credit|%></p>
       <input type="radio" name = "transaction[credit_id]" id="<%=credit.credit_name%>"  value = "<%=credit.id%>"
             <%= 'checked' if current_user.credits == credit %> </input>
        <input type="hidden" name="credit[credit_name]" value="<%=credit.credit_name%>">
