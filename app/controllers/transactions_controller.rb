@@ -26,9 +26,10 @@ end
           flash[:message] = "You Must Select a Credit"
             redirect '/transactions/new'
           else
+            if params["transaction"]["name"] == "" || params["transaction"]["series"] == ""
           flash[:message] = "You Must Enter Transaction Information"
                 redirect '/transactions/new'
-
+            end
           @transaction = Transaction.new(params[:transaction])
             if !params["credit"]["credit_name"].empty? & !params["credit"]["sector"].empty? & !params["credit"]["rating"].empty?
             @transaction.save
